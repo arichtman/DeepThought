@@ -1,0 +1,22 @@
+name: Submodule Update
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    name: Submodule update
+    runs-on: ubuntu-latest
+ 
+    steps:
+      - name: 'Update submodule on parent'
+        uses: 'RevolveNTNU/action-update-submodule@v1'
+        with:
+          pat_token:  ${{ secrets.PAT }}
+          self_dot_git: 'DeepThought.git'
+          checkout_branch: 'main'
+
+          parent_repository: 'www.richtman.com.au'
+          target_branch: 'main'
+          owner: 'arichtman'
